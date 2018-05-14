@@ -13,11 +13,11 @@ pattern = "(SPC_\w+)"
 for i, line in enumerate(open('../molecular_species.txt')):
     for match in re.finditer(pattern,line):
         molec.append(match.group())
-lev = np.linspace(1,132,num =132,dtype = 'float64')
 
 #initialize new netcd4 file
 dataset = xr.Dataset()
 dataset.coords['time'] = ds.coords['time']
+lev = np.linspace(1,132,num =132,dtype = 'float64')
 dataset.coords['lev'] = (('lev'),lev)
 dataset.coords['lat'] = ds.coords['lat'] 
 dataset.coords['lon'] = ds.coords['lon']
@@ -25,6 +25,7 @@ dataset.attrs['title'] = 'GEOS-5 132 lvl restart'
 dataset.attrs['history'] = 'created by Ada Shaw with initial_GEOSChem_rst.2x25_benchmark.nc'
 dataset.attrs['format'] = "NetCDF-4"
 dataset.attrs['conventions'] = 'COARDS'
+dataset['AREA'] = ds['AREA']
 
 #find lat lon dimensions
 lon_dim = len(ds['lon'].values)
