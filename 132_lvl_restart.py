@@ -1,7 +1,6 @@
 import numpy as np
 import xarray as xr
 import matplotlib.pyplot as plt # general plotting
-import cartopy.crs as ccrs # plot on maps, better than the Basemap module
 import re
 import scipy.interpolate
 from scipy.interpolate import interp1d
